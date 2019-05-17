@@ -1,0 +1,21 @@
+{% extends 'base.html' %} 
+{% load static %}
+
+{% block css %}
+  <link rel="stylesheet" href="{% static 'css/posts.css' %}">
+{% endblock %}
+
+{% block body %}
+<section class="contato-section" id="contato">
+    <h2 class="contato-title">Criar uma postagem</h2>
+      <form class="contato-form"  method="POST" autocomplete="off">
+        {% csrf_token %}
+          
+          <input type="submit" value="Criar">
+      </form>
+    </div>
+</section>
+{% endblock %}
+
+{% block script %}
+{% endblock %}

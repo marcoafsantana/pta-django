@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views import generic
 from .models import Posts
+from core.forms import PostForm
 
 from django.shortcuts import render_to_response
 from django.http import HttpResponseRedirect, HttpResponse  
@@ -18,7 +19,6 @@ class HomeView(generic.TemplateView):
 class ContatoView(generic.TemplateView):
     template_name = 'core/contato.html'
     def post (self,request, *args, **kwargs):
-        print('teste')
         nome=request.POST.get('nome')
         email=request.POST.get('email')
         telefone=request.POST.get('telefone')
@@ -35,5 +35,10 @@ class ContatoView(generic.TemplateView):
             'assunto':assunto,
             'mensagem':mensagem
         },)
-        print('teste2')
         return HttpResponseRedirect(reverse_lazy("core:contato"))
+
+
+class CreatePost(CreateView):
+  template_name = 'posts/create-posts.html'
+  model = Posts
+  form_class = PostForm

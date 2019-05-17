@@ -5,4 +5,7 @@
     <a class="navbar-titulo" href="{% url 'core:home' %}">Blog PTA</a>
     <a class="navbar-titulo" href="{% url 'institucional:institucional' %}">Quem somos</a>
     <a class="navbar-titulo" href="{% url 'core:contato' %}">Contato</a>   
+    {% if user.is_authenticated %}
+    <a class="navbar-titulo" href="{% url 'posts:criar' %}">Criar postagem</a>
+    {% endif %}
 </header>
